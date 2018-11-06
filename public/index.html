@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!-- <html lang="en"> -->
+<!-- <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" 
+    content="908937060166-ertjl9onh50b2chho68p4fabc0b6us3f.apps.googleusercontent.com">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Mi pagina</title>
+</head>
+<body>
+    <h1>Mi hello world desde node.js</h1>
+
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="js/app.js"></script>
+</body>
+</html> -->
+
+<!-- 
+este funciona -->
+<!-- <html lang="en">
+  <head>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="908937060166-ertjl9onh50b2chho68p4fabc0b6us3f.apps.googleusercontent.com">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">   
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  </head>
+  <body>
+    <div class="container">
+        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+       
+        <div class="data">
+            <p>Profile details</p>
+            <p id="name"></p>
+            <img id="pic" class="img-fluid" width="100">
+            <p id="email"></p>
+        </div>
+       
+        <a href="https://www.google.com/accounts/Logout?continue=http://localhost:8887;" onclick="signOut();" data-theme="dark">Sign out</a>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html> -->
+
+<!-- este tambien funciona y vota token -->
+<html lang="es">
+  <head>
+    <meta name="google-signin-scope" content="profile email"> 
+    <!-- content :YOUR_CLIENT_ID.apps.googleusercontent.com  -->
+    <meta name="google-signin-client_id" content="908937060166-ertjl9onh50b2chho68p4fabc0b6us3f.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  </head>
+  <body >
+    <main style="width:50%; height:50vh; background-color:rgba(0, 102, 255, 0.733); padding: 3rem">
+        <div class="g-signin2" data-onsuccess="onSignIn" id="my-signin2"></div>
+    </main>
+    <script>
+      function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      };
+      function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+    </script>
+  </body>
+</html>
+
+
+<!-- <html lang="es">
+<head>
+  <meta name="google-signin-client_id" content="908937060166-ertjl9onh50b2chho68p4fabc0b6us3f.apps.googleusercontent.com">
+</head>
+<body>
+  <main style="width:50%; height:50vh; background-color:rgba(0, 110, 255, 0.781); padding: 3rem">
+        <div id="my-signin2"></div>
+  </main>
+  <script>
+    function onSuccess(googleUser) {
+      console.log('Ingresaste como: ' + googleUser.getBasicProfile().getName());
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  </script>
+
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+</body>
+</html> -->
